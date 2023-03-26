@@ -106,16 +106,14 @@ public class CityListTest {
             cityList.add(c1);
 
             assertEquals(0, c1.compareTo(cityList.getCities(true).get(1)));
-        //here c1 is Khulna, true means it will sort by cityname, .get(1) will give the second city from the sorted citylist which is Khulna
+            //here c1 is Khulna, true means it will sort by cityname, .get(1) will give the second city from the sorted city list which is Khulna
         //so it matches and test will be ok
             assertEquals(0, c2.compareTo(cityList.getCities(true).get(0)));
 
-
             assertEquals(0, c1.compareTo(cityList.getCities(false).get(0)));
             assertEquals(0, c2.compareTo(cityList.getCities(false).get(1)));
-        //here c2 is Dhaka, false means it will sort by province name, .get(1) will give the second city from the sorted citylist which is Dhaka
-        //therfore test will be passed
-
+        //here c2 is Dhaka, false means it will sort by province name, .get(1) will give the second city from the sorted city list which is Dhaka
+        //therefore test will be passed
         }
     }
 
