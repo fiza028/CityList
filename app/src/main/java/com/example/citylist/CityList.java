@@ -32,7 +32,6 @@ public class CityList {
         if(cities.contains(city)==false)
         {
             throw new IllegalArgumentException();
-            //when i want to delete city which doesn't exist then it will give exception
         }
         cities.remove(city);
     }
@@ -49,16 +48,20 @@ public class CityList {
     /**
      * This returns a sorted list of
      * @return
-     *      Return the sorted list either by cityname or by province name
+     *      Return the sorted list either by city name or by province name
      */
     public List<City> getCities(boolean f){
         List<City>cityList=cities;
         Comparator<City>comByCity=(City c1,City c2)->c1.getCityName().compareTo(c2.getCityName());
-        Comparator<City>comByProvince=(City c1, City c2)->c1.getProvinceName().compareTo(c2.getProvinceName());
+       Comparator<City>comByProvince=(City c1, City c2)->c1.getProvinceName().compareTo(c2.getProvinceName());
+        //Comparator is an interface used to compare two objects
+        //here lambda expression takes two city objects and compare them using compareto() method
         if(f==true)
             Collections.sort(cityList, comByCity);
         else
             Collections.sort(cityList, comByProvince);
+        //if flag is true then citylist will be sorted according to cityname
+        //else citylist will be sorted according to province name
         return cityList;
 
     }

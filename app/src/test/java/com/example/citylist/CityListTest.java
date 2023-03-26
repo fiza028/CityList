@@ -59,6 +59,8 @@ public class CityListTest {
         cityList.add(city1);
         cityList.delete(city);
         assertTrue(!cityList.getCities().contains(city));
+        //this method is used to check whether city is deleted or not
+        //if the city is deleted then the test will be passed
     }
 
     @Test
@@ -75,6 +77,7 @@ public class CityListTest {
         {
             cityList.delete(c1);
         });
+//  this function is used to check if it gives an exception to delete a city when the city doesn't exist
     }
 
     @Test
@@ -86,30 +89,33 @@ public class CityListTest {
         assertEquals(2, cityList.Count());
         cityList.delete(c1);
         assertEquals(1, cityList.Count());
-
+//this method is used to check if it is giving the total number of cities right or wrong
     }
 
     @Test
-    public void testSort(){
-//        CityList cityList = mockCityList();
-//        assertEquals(0, mockCity().compareTo(cityList.getCities(true).get(0)));
-//        City cc1=new City("Khulna", "Jashore");
-//        cityList.add(cc1);
-//
-//        assertEquals(0, cc1.compareTo(cityList.getCities(true).get(0)));
-//        assertEquals(0,mockCity().compareTo(cityList.getCities(false).get(1)));
-//
-//        assertEquals(0, cc1.compareTo(cityList.getCities(false).get(1)));
-//        assertEquals(0,mockCity().compareTo(cityList.getCities(true).get(0)));
+    public void testSort() {
+            CityList cityList = new CityList();
+
+            City c1=new City("Khulna", "Jashore");
+            City c2 = new City("Dhaka", "Savar");
+
+            cityList.add(c2);
+            assertEquals(0, c2.compareTo(cityList.getCities(true).get(0)));//sorted by city name
+            assertEquals(0, c2.compareTo(cityList.getCities(false).get(0)));//sorted by province name
+
+            cityList.add(c1);
+
+            assertEquals(0, c1.compareTo(cityList.getCities(true).get(1)));
+        //here c1 is Khulna, true means it will sort by cityname, .get(1) will give the second city from the sorted citylist which is Khulna
+        //so it matches and test will be ok
+            assertEquals(0, c2.compareTo(cityList.getCities(true).get(0)));
 
 
-        CityList cityList = new CityList();
-        City cc1=new City("Khulna", "Jashore");
-        City cc2=new City("Dhaka", "Banani");
+            assertEquals(0, c1.compareTo(cityList.getCities(false).get(0)));
+            assertEquals(0, c2.compareTo(cityList.getCities(false).get(1)));
+        //here c2 is Dhaka, false means it will sort by province name, .get(1) will give the second city from the sorted citylist which is Dhaka
+        //therfore test will be passed
 
-        cityList.add(cc2);
-        assertEquals(0, cc2.compareTo(cityList.getCities(true).get(0)));
-
-
+        }
     }
-}
+
